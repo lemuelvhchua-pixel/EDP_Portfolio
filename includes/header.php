@@ -34,9 +34,6 @@ $links = [
     <meta property="og:image:alt" content="LC logo - Lemuel Chua Portfolio" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="stylesheet" href="<?= url('css/style.css') ?>" />
-    <link rel="stylesheet" href="<?= url('css/v2.css') ?>" />
-    <link rel="stylesheet" href="<?= url('css/php.css') ?>" />
-    <link rel="stylesheet" href="<?= url('css/readability.css') ?>" />
     <link rel="icon" type="image/png" href="<?= url('images/logo.png') ?>" />
 </head>
 <body class="<?= e($bodyClass) ?>"<?= ($user && $user['role'] === 'admin') ? ' data-feed="' . url('admin/messages.php') . '"' : '' ?>>

@@ -199,6 +199,9 @@ INSERT IGNORE INTO items (id, list_key, title, description, image, thumb, media,
 
 
 -- ---------------------------------------------------------------
+-- THIS SITE as a third web project.
+-- Database already set up (like the live site)? Copy from this line to the end
+-- into phpMyAdmin > SQL and click Go. Safe to run more than once.
 
 INSERT IGNORE INTO sections (section_key, kind, title, nav_label, intro, sort_order, is_visible) VALUES
  ('portfolio_site', 'case', 'THIS SITE - WEB PROJECT', 'THIS SITE', NULL, 35, 1);
