@@ -85,8 +85,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if ($t === '' || mb_strlen($t) > 150) throw new RuntimeException('Give it a title (up to 150 characters).');
                 $img = save_upload('image', 'image');
                 if (!$img) throw new RuntimeException('Choose an image to upload.');
-                $media = $postList === 'video' ? save_upload('media', 'video') : null;
-                if ($postList === 'video' && !$media) { delete_upload($img); throw new RuntimeException('Choose an MP4 video to upload.'); }
+                $media = null;
+                if ($postList === 'video') {
+                    $ytId = youtube_id($_POST['media_url'] ?? '');
+                    if (!$ytId) { delete_upload($img); throw new RuntimeException('Paste a valid YouTube link (for example https://youtu.be/VvwvFlpmBM4).'); }
+                    $media = 'https://www.youtube.com/embed/' . $ytId;
+                }
                 $thumb = $postList === 'photography' ? make_thumb($img) : null;
                 $max = (int) db()->query('SELECT COALESCE(MAX(sort_order), 0) FROM items WHERE list_key = ' . db()->quote($postList))->fetchColumn();
                 $featured = str_starts_with($postList, 'certs_') && !empty($_POST['is_featured']) ? 1 : 0;
@@ -199,9 +203,9 @@ $counts = db()->query('SELECT list_key, COUNT(*) n FROM items GROUP BY list_key'
                             </div>
                             <?php if ($list === 'video'): ?>
                             <div class="form-group">
-                                <label class="form-label" for="amedia">VIDEO <span>*</span></label>
-                                <input class="form-input" type="file" id="amedia" name="media" accept="video/mp4" required />
-                                <p class="field-hint">MP4, up to 40 MB</p>
+                                <label class="form-label" for="amedia">YOUTUBE LINK <span>*</span></label>
+                                <input class="form-input" type="url" id="amedia" name="media_url" placeholder="https://youtu.be/VvwvFlpmBM4" required />
+                                <p class="field-hint">Upload the video to YouTube, then paste its link here</p>
                             </div>
                             <?php endif; ?>
                         </div>

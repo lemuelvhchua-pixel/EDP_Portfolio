@@ -24,7 +24,7 @@ require __DIR__ . '/includes/header.php';
             <h1 class="index-hero-name">Lemuel D. Chua</h1>
             <p class="index-hero-role">// Photographer &middot; Editor &middot; Designer &middot; Developer</p>
             <p class="hero-desc">
-                [ I'm an IT student who mixes photography, design, and code. From capturing moments around the city to building websites with my team, I like turning ideas into something people can actually see and use. ]
+                I'm an IT student who mixes photography, design, and code. From capturing moments around the city to building websites with my team, I like turning ideas into something people can actually see and use.
             </p>
             <div class="hero-divider"></div>
             <div>
@@ -52,27 +52,91 @@ require __DIR__ . '/includes/header.php';
         <!-- STATS -->
         <div class="stats-strip">
             <div class="stat-item">
-                <p class="stat-num" data-count="<?= $stats['projects'] ?>"><?= $stats['projects'] ?></p>
-                <p class="stat-label">PROJECTS</p>
+                <p class="stat-num" data-count="<?= $stats['websites'] ?>" data-pad="2"><?= sprintf('%02d', $stats['websites']) ?></p>
+                <p class="stat-label">WEBSITES BUILT</p>
+            </div>
+            <div class="stat-item">
+                <p class="stat-num" data-count="<?= $stats['apps'] ?>" data-pad="2"><?= sprintf('%02d', $stats['apps']) ?></p>
+                <p class="stat-label">APP DESIGNS</p>
             </div>
             <div class="stat-item">
                 <p class="stat-num" data-count="<?= $stats['certs'] ?>"><?= $stats['certs'] ?></p>
                 <p class="stat-label">CERTIFICATES</p>
             </div>
             <div class="stat-item">
-                <p class="stat-num" data-count="<?= $stats['websites'] ?>" data-pad="2"><?= sprintf('%02d', $stats['websites']) ?></p>
-                <p class="stat-label">WEBSITES BUILT</p>
-            </div>
-            <div class="stat-item">
-                <p class="stat-num">&#8734;</p>
-                <p class="stat-label">CREATIVITY</p>
+                <p class="stat-num" data-count="<?= $stats['photos'] ?>"><?= $stats['photos'] ?></p>
+                <p class="stat-label">PHOTOS</p>
             </div>
         </div>
+
+        <!-- FEATURED WORK -->
+        <section class="index-section">
+            <div class="section-header">
+                <div class="section-num">01</div>
+                <h2 class="section-title">FEATURED WORK</h2>
+            </div>
+            <div class="section-line"></div>
+
+            <div class="cards">
+                <article class="card">
+                    <a class="card-img" href="portfolio.php#sec-likhub" aria-label="LikHub project">
+                        <div class="card-img-overlay"></div>
+                        <img src="images/likhub/home.jpg" alt="LikHub home page with art lessons, a gallery and commissions" loading="lazy" />
+                    </a>
+                    <div class="card-hover-line"></div>
+                    <div class="card-body">
+                        <p class="card-tag">WEB</p>
+                        <h3 class="card-title">LIKHUB</h3>
+                        <p class="card-desc">Our site for student artists. Lessons, a gallery and commissions. I co-founded it and did the development.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="portfolio.php#sec-likhub" class="card-link">VIEW PROJECT &#9658;</a>
+                        <div class="card-dot"></div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <a class="card-img" href="portfolio.php#sec-kabakal" aria-label="Kabakal project">
+                        <div class="card-img-overlay"></div>
+                        <img src="images/kabakal/home.jpg" alt="Kabakal Fitness Equipment online shop home page" loading="lazy" />
+                    </a>
+                    <div class="card-hover-line"></div>
+                    <div class="card-body">
+                        <p class="card-tag">WEB</p>
+                        <h3 class="card-title">KABAKAL</h3>
+                        <p class="card-desc">A shop and inventory system for a fitness equipment store, with GCash payments and an admin side.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="portfolio.php#sec-kabakal" class="card-link">VIEW PROJECT &#9658;</a>
+                        <div class="card-dot"></div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <a class="card-img" href="portfolio.php#sec-photography" aria-label="Photography">
+                        <div class="card-img-overlay"></div>
+                        <img src="images/photos/intramuros-walls-night.jpg" alt="The old stone walls of Intramuros lit up at night" loading="lazy" />
+                    </a>
+                    <div class="card-hover-line"></div>
+                    <div class="card-body">
+                        <p class="card-tag">PHOTOGRAPHY</p>
+                        <h3 class="card-title">INTRAMUROS</h3>
+                        <p class="card-desc">One of my favorite night shots from exploring Intramuros</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="portfolio.php#sec-photography" class="card-link">VIEW PHOTOS &#9658;</a>
+                        <div class="card-dot"></div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <div class="px-divider"></div>
 
         <!-- WHAT I DO -->
         <section class="index-section">
             <div class="section-header">
-                <div class="section-num">01</div>
+                <div class="section-num">02</div>
                 <h2 class="section-title">WHAT I DO</h2>
             </div>
             <div class="section-line"></div>
@@ -90,7 +154,7 @@ require __DIR__ . '/includes/header.php';
                     <a href="portfolio.php#sec-graphics">SEE DESIGNS &#9658;</a>
                 </div>
                 <div class="service">
-                    <span class="service-icon" aria-hidden="true">&#9647;</span>
+                    <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" shape-rendering="crispEdges"><rect x="3" y="1" width="10" height="14"/><path d="M7 12h2"/></svg></span>
                     <h3>UI DESIGN</h3>
                     <p>App screens and flows in Figma, from login pages to a full business app.</p>
                     <a href="portfolio.php#sec-ui">SEE SCREENS &#9658;</a>
@@ -112,94 +176,26 @@ require __DIR__ . '/includes/header.php';
 
         <div class="px-divider"></div>
 
-        <!-- DEMO REEL -->
-        <section class="index-section">
-            <div class="section-header">
-                <div class="section-num">02</div>
-                <h2 class="section-title">DEMO REEL</h2>
-            </div>
-            <div class="section-line"></div>
-            <div class="video-wrap">
-                <video controls preload="metadata" poster="images/intro-poster.jpg">
-                    <source src="video/intro.mp4" type="video/mp4" />
-                </video>
-                <div class="video-meta">
-                    <span class="video-title">[ Lemuel Chua / Portfolio Intro ]</span>
-                    <span class="video-tag">DEMO REEL</span>
-                </div>
-            </div>
-        </section>
-
-        <div class="px-divider"></div>
-
-        <!-- FEATURED WORK -->
+<!-- DEMO REEL -->
         <section class="index-section">
             <div class="section-header">
                 <div class="section-num">03</div>
-                <h2 class="section-title">FEATURED WORK</h2>
+                <h2 class="section-title">DEMO REEL</h2>
             </div>
             <div class="section-line"></div>
-
-            <div class="cards">
-                <article class="card">
-                    <a class="card-img" href="portfolio.php#sec-likhub" aria-label="LikHub project">
-                        <div class="card-img-overlay"></div>
-                        <img src="images/likhub/home.jpg" alt="LikHub home page with art lessons, a gallery and commissions" loading="lazy" />
-                    </a>
-                    <div class="card-hover-line"></div>
-                    <div class="card-body">
-                        <p class="card-tag">WEB</p>
-                        <h3 class="card-title">LIKHUB</h3>
-                        <p class="card-desc">[ Our site for student artists. Lessons, a gallery and commissions. I co-founded it and did the development. ]</p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="portfolio.php#sec-likhub" class="card-link">VIEW PROJECT &#9658;</a>
-                        <div class="card-dot"></div>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <a class="card-img" href="portfolio.php#sec-kabakal" aria-label="Kabakal project">
-                        <div class="card-img-overlay"></div>
-                        <img src="images/kabakal/home.jpg" alt="Kabakal Fitness Equipment online shop home page" loading="lazy" />
-                    </a>
-                    <div class="card-hover-line"></div>
-                    <div class="card-body">
-                        <p class="card-tag">WEB</p>
-                        <h3 class="card-title">KABAKAL</h3>
-                        <p class="card-desc">[ A shop and inventory system for a fitness equipment store, with GCash payments and an admin side. ]</p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="portfolio.php#sec-kabakal" class="card-link">VIEW PROJECT &#9658;</a>
-                        <div class="card-dot"></div>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <a class="card-img" href="portfolio.php#sec-photography" aria-label="Photography">
-                        <div class="card-img-overlay"></div>
-                        <img src="images/photos/intramuros-walls-night.jpg" alt="The old stone walls of Intramuros lit up at night" loading="lazy" />
-                    </a>
-                    <div class="card-hover-line"></div>
-                    <div class="card-body">
-                        <p class="card-tag">PHOTOGRAPHY</p>
-                        <h3 class="card-title">INTRAMUROS</h3>
-                        <p class="card-desc">[ One of my favorite night shots from exploring Intramuros ]</p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="portfolio.php#sec-photography" class="card-link">VIEW PHOTOS &#9658;</a>
-                        <div class="card-dot"></div>
-                    </div>
-                </article>
+            <div class="video-wrap" style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                <iframe src="https://www.youtube.com/embed/3-aHL5uC2ho" title="intro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"></iframe>
+            </div>
+            <div class="video-meta" style="margin-top: 10px;">
+                <span class="video-title">[ Lemuel Chua / Portfolio Intro ]</span>
+                <span class="video-tag">DEMO REEL</span>
             </div>
         </section>
-
-        <div class="px-divider"></div>
 
         <!-- CTA -->
         <div class="cta-strip">
             <h2 class="cta-title">INTERESTED IN WORKING TOGETHER?</h2>
-            <p class="cta-sub">[ Let's create something worth remembering. ]</p>
+            <p class="cta-sub">Let's create something worth remembering.</p>
             <a href="contact.php" class="btn">GET IN TOUCH</a>
         </div>
 

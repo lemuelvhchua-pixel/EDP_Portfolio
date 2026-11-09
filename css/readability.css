@@ -1,0 +1,65 @@
+/* READABILITY PASS
+   Loaded last. The pixel font (Press Start 2P) stays on big headings only; at small sizes
+   it blurs (B reads as D), so small UI text switches to Share Tech Mono and gets bigger.
+   Body text is brighter for contrast on the dark background. */
+
+/* Small labels, buttons and nav: readable mono instead of pixel font */
+.nav-links a, .nav-hello, .nav-logout button, .btn, .footer-left, .footer-right a, .breadcrumb,
+.section-num, .card-tag, .card-link, .service a, .hero-badge, .index-hero-role, .hero-role,
+.skill-tag, .stat-label, .filter-label, .filter-btn, .figma-page-num, .video-title, .video-tag,
+.about-tag, .about-status span, .detail-label, .tl-year, .info-label, .socials-header,
+.social-list a, .status-badge span, .terminal-title, .form-label, .form-submit, .form-note,
+.form-success p, .figma-more summary, .field-hint, .live-pill {
+    font-family: 'Share Tech Mono', monospace;
+    letter-spacing: 1.5px;
+}
+
+.nav-links a, .nav-logout button { font-size: 13px; letter-spacing: 1px; }
+.nav-hello { font-size: 12px; }
+.btn, .form-submit { font-size: 14px; letter-spacing: 2px; }
+.card-link, .service a, .filter-btn, .figma-more summary, .social-list a, .video-title { font-size: 13px; }
+.section-num, .card-tag, .hero-badge, .skill-tag, .stat-label, .filter-label, .video-tag,
+.about-tag, .about-status span, .detail-label, .tl-year, .info-label, .socials-header,
+.status-badge span, .terminal-title, .form-label, .form-success p, .footer-left,
+.footer-right a, .breadcrumb, .live-pill { font-size: 12px; }
+.figma-page-num, .form-note, .field-hint { font-size: 11px; }
+.skill-tag { font-size: 13px; }
+
+/* Tabs, chips, case-study labels and the admin pages (Inbox / Manage) */
+.cert-tab, .chip, .story-step h4, .msg-from, .msg-date, .msg-meta, .empty-box p,
+.admin-fab, .mng-title, .mini, .mng-kind, .pw-toggle {
+    font-family: 'Share Tech Mono', monospace;
+    letter-spacing: 1px;
+}
+.cert-tab, .story-step h4, .msg-from, .mng-title, .admin-fab { font-size: 13px; }
+.chip, .msg-meta, .empty-box p, .mini, .mng-kind, .pw-toggle { font-size: 12px; }
+.msg-date { font-size: 11px; color: #8a8a8a; }
+.mng-kind { color: #8a8a8a; }
+
+/* Brighter body text */
+.hero-desc, .card-desc, .service p, .section-intro, .cta-sub, .case-desc, .case-features li,
+.ui-head p, .about-body-text, .tl-desc, .detail-val, .info-val, .lb-caption, .case-meta dd {
+    color: #b8b8b8;
+}
+.card-desc, .service p, .case-features li, .ui-head p, .tl-desc { font-size: 13px; }
+.section-intro, .case-desc, .about-body-text, .cta-sub { font-size: 14px; }
+.nav-links a, .filter-btn, .social-list a { color: #9a9a9a; }
+.stat-label, .skill-tag, .footer-left, .breadcrumb a, .about-status span, .status-badge span { color: #8a8a8a; }
+.form-label, .hero-role { color: #a8a8a8; }
+
+/* HOME HERO: smaller frame, bigger content */
+.index-hero { min-height: min(88vh, 780px); padding: 72px 32px 64px; }
+.hero-avatar { width: 168px; height: 168px; margin-bottom: 32px; }
+.index-hero-name { font-size: clamp(16px, 3.2vw, 32px); margin-bottom: 18px; }
+.index-hero-role { font-size: 16px; letter-spacing: 2px; text-align: center; }
+@media (max-width: 600px) { .index-hero-role { font-size: 14px; letter-spacing: 1px; } }
+.hero-desc { font-size: 15px; max-width: 580px; line-height: 1.9; }
+.hero-divider { max-width: 580px; }
+
+/* WHAT I DO: 5 cards in one row on wide screens (no lone card on row two) */
+@media (min-width: 1000px) {
+    .services { grid-template-columns: repeat(5, 1fr); }
+}
+.service-icon { height: 18px; line-height: 18px; }
+.service-icon svg { width: 18px; height: 18px; display: block; }
+.stat-num { font-size: 24px; }

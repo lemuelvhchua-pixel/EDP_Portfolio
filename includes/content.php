@@ -6,6 +6,7 @@ const LISTS = [
     'photography'  => ['label' => 'Photography',            'section' => 'photography', 'tag' => 'PHOTOGRAPHY'],
     'likhub'       => ['label' => 'LikHub screenshots',     'section' => 'likhub',      'tag' => 'WEB'],
     'kabakal'      => ['label' => 'Kabakal screenshots',    'section' => 'kabakal',     'tag' => 'WEB'],
+    'portfolio_site' => ['label' => 'This site screenshots', 'section' => 'portfolio_site', 'tag' => 'WEB'],
     'login_app'    => ['label' => 'Figma: Login App',       'section' => 'ui',          'tag' => 'FIGMA'],
     'micromml'     => ['label' => 'Figma: MicroMML',        'section' => 'ui',          'tag' => 'FIGMA'],
     'graphics'     => ['label' => 'Graphic Design',         'section' => 'graphics',    'tag' => 'DESIGN'],
@@ -20,6 +21,7 @@ const LISTS = [
 const PROJECT_LABELS = [
     'likhub'       => 'LikHub (web project)',
     'kabakal'      => 'Kabakal (web project)',
+    'portfolio_site' => 'This site (web project)',
     'login_app'    => 'Login App (Figma)',
     'micromml'     => 'MicroMML (Figma)',
     'certs_sql'    => 'SQL certificate path',
@@ -73,10 +75,22 @@ function portfolio_stats(): array
 {
     $c = fn(string $where) => (int) db()->query("SELECT COUNT(*) FROM items WHERE is_visible = 1 AND $where")->fetchColumn();
     return [
-        // each web or figma project counts once, the rest count per item
-        'projects' => $c("list_key IN ('graphics','art','networking')") + 4,
         'certs'    => $c("list_key IN ('certs_sql','certs_python')"),
         'photos'   => $c("list_key = 'photography'"),
-        'websites' => 2,
+        'websites' => 3, // LikHub, Kabakal and this site
+        'apps'     => 2, // Figma: Login App and MicroMML
     ];
+}
+
+/**
+ * Pulls the 11-character YouTube video ID out of a link (watch, youtu.be, embed, shorts)
+ * or a bare ID. Returns null when the value isn't a YouTube video.
+ */
+function youtube_id(?string $v): ?string
+{
+    $v = trim((string) $v);
+    if ($v === '') return null;
+    if (preg_match('~^[A-Za-z0-9_-]{11}$~', $v)) return $v;
+    if (preg_match('~(?:youtube(?:-nocookie)?\.com/(?:watch\?(?:.*&)?v=|embed/|shorts/|live/|v/)|youtu\.be/)([A-Za-z0-9_-]{11})~i', $v, $m)) return $m[1];
+    return null;
 }

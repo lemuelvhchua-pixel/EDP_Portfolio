@@ -108,7 +108,6 @@ require __DIR__ . '/includes/header.php';
                             <li><a href="https://www.facebook.com/LemuelChua05/" target="_blank" rel="noopener"><span class="s-icon">&#128101;</span> FACEBOOK <span class="s-arrow">▸</span></a></li>
                             <li><a href="https://www.instagram.com/shinooooooow/" target="_blank" rel="noopener"><span class="s-icon">&#128247;</span> INSTAGRAM <span class="s-arrow">▸</span></a></li>
                             <li><a href="https://github.com/lemuelvhchua-pixel" target="_blank" rel="noopener"><span class="s-icon">&#128025;</span> GITHUB <span class="s-arrow">▸</span></a></li>
-                            <li><a href="https://likhub.online/likhub/" target="_blank" rel="noopener"><span class="s-icon">&#127912;</span> LIKHUB <span class="s-arrow">▸</span></a></li>
                         </ul>
                     </div>
 

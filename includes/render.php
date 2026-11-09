@@ -17,7 +17,7 @@ function r_card(array $it, string $tag): string
                     <div class="card-body">
                         <p class="card-tag">$tag</p>
                         <h3 class="card-title">$t</h3>
-                        <p class="card-desc">[ $d ]</p>
+                        <p class="card-desc">$d</p>
                     </div>
                     <div class="card-footer">
                         <button type="button" class="card-link" data-open>VIEW &#9658;</button>
@@ -47,7 +47,7 @@ function r_slideshow(array $items, int $autoplay, bool $thumbs, ?string $tag, bo
         $lazy = $n > 1 ? ' loading="lazy"' : '';
         $slides[] = "                    <div class=\"ss-slide$active\" data-full=\"$full\" data-title=\"$t\" data-caption=\"$d\">\n"
                   . "                        <img src=\"$full\" alt=\"$alt\"$lazy />\n"
-                  . "                        <div class=\"ss-caption\">$tg<h3>$t</h3><p>[ $d ]</p></div>\n"
+                  . "                        <div class=\"ss-caption\">$tg<h3>$t</h3><p>$d</p></div>\n"
                   . "                    </div>";
         if ($thumbs) {
             $tb[] = "                    <button type=\"button\" class=\"ss-thumb$active\" aria-label=\"Show $alt\"><img src=\"$th\" alt=\"\" loading=\"lazy\" /></button>";
@@ -90,7 +90,7 @@ function r_case(string $slug): string
     return "            <article class=\"case\">\n"
          . "                <div class=\"case-info\">\n"
          . "                    $logo\n"
-         . "                    <p class=\"case-desc\">[ $desc ]</p>\n"
+         . "                    <p class=\"case-desc\">$desc</p>\n"
          . $metaHtml . $storyHtml . $featHtml
          . "                    <div class=\"chips\">$chips</div>\n"
          . "                    $actions\n"
@@ -120,7 +120,7 @@ function r_figma(): string
         $out .= "            <div class=\"ui-block no-nav\" data-gallery>\n"
               . "                <div class=\"ui-head\">\n"
               . '                    <h3>' . e($p['title']) . "</h3>\n"
-              . '                    <p>[ ' . e($p['description']) . " ]</p>\n"
+              . '                    <p>' . e($p['description']) . "</p>\n"
               . "                </div>\n"
               . "                <div class=\"login-strip\">\n" . implode("\n", array_map('r_phone', $login)) . "\n                </div>\n"
               . "            </div>\n";
@@ -131,7 +131,7 @@ function r_figma(): string
         $out .= "            <div class=\"ui-block\" data-gallery>\n"
               . "                <div class=\"ui-head\">\n"
               . '                    <h3>' . e($p['title']) . "</h3>\n"
-              . '                    <p>[ ' . e($p['description']) . " ]</p>\n"
+              . '                    <p>' . e($p['description']) . "</p>\n"
               . "                </div>\n"
               . "                <div class=\"carousel\">\n"
               . "                    <div class=\"car-nav\">\n"
@@ -177,7 +177,7 @@ function r_certs(): string
                 . "                        <div class=\"card-body\">\n"
                 . "                            <p class=\"card-tag\">LEARNING PATH</p>\n"
                 . "                            <h3 class=\"card-title\">$t</h3>\n"
-                . "                            <p class=\"card-desc\">[ $d ]</p>\n"
+                . "                            <p class=\"card-desc\">$d</p>\n"
                 . "                        </div>\n"
                 . "                    </article>\n";
         }
@@ -194,10 +194,20 @@ function r_video(): string
 {
     $v = items('video')[0] ?? null;
     if (!$v || !$v['media']) return '';
+    $yt = youtube_id($v['media']);
+    if ($yt) {
+        $player = '                <div class="video-frame">' . "\n"
+            . '                    <iframe src="https://www.youtube.com/embed/' . e($yt) . '" title="' . e($v['title']) . '" loading="lazy" frameborder="0"'
+            . ' allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"'
+            . ' referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>' . "\n"
+            . "                </div>\n";
+    } else { // older MP4 uploads still work
+        $player = '                <video controls preload="metadata" poster="' . e($v['image']) . "\">\n"
+            . '                    <source src="' . e($v['media']) . "\" type=\"video/mp4\" />\n"
+            . "                </video>\n";
+    }
     return "            <div class=\"video-wrap\">\n"
-         . '                <video controls preload="metadata" poster="' . e($v['image']) . "\">\n"
-         . '                    <source src="' . e($v['media']) . "\" type=\"video/mp4\" />\n"
-         . "                </video>\n"
+         . $player
          . "                <div class=\"video-meta\">\n"
          . '                    <p class="video-title">[ ' . e($v['title']) . " ]</p>\n"
          . '                    <p class="video-tag">' . e($v['description'] ?: 'FEATURED') . "</p>\n"
@@ -219,7 +229,7 @@ function r_section(array $s, int $num): string
     }
     if (trim($body) === '') return '';
     $cls = $s['kind'] === 'video' ? 'video-section' : 'cat-section';
-    $intro = $s['intro'] ? "\n            <p class=\"section-intro\">[ " . e($s['intro']) . ' ]</p>' : '';
+    $intro = $s['intro'] ? "\n            <p class=\"section-intro\">" . e($s['intro']) . '</p>' : '';
     return "\n        <!-- " . e($s['title']) . " -->\n"
          . "        <section class=\"$cls\" id=\"sec-" . e($key) . '"' . ($gallery ? ' data-gallery' : '') . ">\n"
          . "            <div class=\"section-header\">\n"

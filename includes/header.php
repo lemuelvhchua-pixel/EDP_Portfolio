@@ -36,6 +36,7 @@ $links = [
     <link rel="stylesheet" href="<?= url('css/style.css') ?>" />
     <link rel="stylesheet" href="<?= url('css/v2.css') ?>" />
     <link rel="stylesheet" href="<?= url('css/php.css') ?>" />
+    <link rel="stylesheet" href="<?= url('css/readability.css') ?>" />
     <link rel="icon" type="image/png" href="<?= url('images/logo.png') ?>" />
 </head>
 <body class="<?= e($bodyClass) ?>"<?= ($user && $user['role'] === 'admin') ? ' data-feed="' . url('admin/messages.php') . '"' : '' ?>>
@@ -72,10 +73,6 @@ $links = [
             <?php endif; ?>
         </ul>
     </nav>
-
-    <?php if ($user && $user['role'] === 'admin' && !empty($_SESSION['default_pw'])): ?>
-    <p class="alert err pw-warning" role="alert">You're still using the default admin password from README.md, so anyone could log in as you. <a href="<?= url('admin/account.php') ?>">Change it now &#9658;</a></p>
-    <?php endif; ?>
 
     <?php if (!empty($crumb)): ?>
     <!-- BREADCRUMB -->

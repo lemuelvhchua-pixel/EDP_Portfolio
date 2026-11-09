@@ -182,7 +182,9 @@ function is_local(): bool
 // "VIEW CODE" button: opens the project's folder in this repo on GitHub.
 function code_button(string $project): string
 {
-    return '<a href="' . e(GITHUB_REPO . '/tree/main/projects/' . $project) . '" target="_blank" rel="noopener" class="btn btn-local">&#9654; VIEW CODE</a>';
+    // '.' means the whole repo (this portfolio site itself)
+    $href = $project === '.' ? GITHUB_REPO : GITHUB_REPO . '/tree/main/projects/' . $project;
+    return '<a href="' . e($href) . '" target="_blank" rel="noopener" class="btn btn-local">&#9654; VIEW CODE</a>';
 }
 
 // "DOWNLOAD RESUME" button, shown only when the PDF from config.php exists.
