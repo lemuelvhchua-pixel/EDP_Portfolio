@@ -1,0 +1,2 @@
+# These are installed next to the portfolio by setup.php. Don't serve them from here.
+Require all denied

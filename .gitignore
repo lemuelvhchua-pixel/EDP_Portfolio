@@ -1,0 +1,9 @@
+# OS / editor junk
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/
+
+# local overrides (never commit real passwords)
+config.local.php
+*.log
